@@ -1,0 +1,55 @@
+swagger: "2.0"
+info: # infoオブジェクト
+  title: "Swaggerの例"
+  version: "1.0.0"
+host: "localhost"
+basePath: "/v1"
+schemes:
+- "http"
+paths: # pathsオブジェクト
+  /user/{user_id}:
+    get: # getメソッドのoperationオブジェクト
+      tags:
+      - "userAPI"
+      summary: "ユーザーIDによって、ユーザー情報を取得する"
+      operationId: "getUserByUserId"
+      produces:
+      - "application/json"
+      parameters: # parameterオブジェクトの配列
+      - name: "user_id"
+        in: "path"
+        description: "ユーザーID"
+        required: true
+        type: "number"
+      responses: # responsesオブジェクト
+        200:
+          description: "成功なレスポンス"
+          schema: # schemaオブジェクト
+            $ref: "#/definitions/User" 
+            # definitionsに定義されたオブジェクトの参考
+        400:
+          description: "無効なユーザーID"
+        404:
+          description: "ユーザーを見つけていません"
+definitions: # definitionsオブジェクト
+  User: # schemaオブジェクト
+    type: "object"
+    properties:
+      id: # schemaオブジェクト
+        type: "integer"
+        format: "int64"
+      name: # schemaオブジェクト
+        type: "string"
+      email: # schemaオブジェクト
+        type: "string"
+  UpdateUserReq: # schemaオブジェクト
+    type: "object"
+    required:
+      - "name"
+      - "email"
+    properties:
+      name: # schemaオブジェクト
+        type: "string"
+      email: # schemaオブジェクト
+        type: "string"
+
