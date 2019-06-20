@@ -1,6 +1,7 @@
 # sample-swagger-test
 
-OpenAPIではないため使えない  
+[mikkeloscar/gin-swagger](https://github.com/mikkeloscar/gin-swagger)を利用した自動生成。  
+OpenAPIではないため使えない。  
 同じ機構を使えば実現できそう  
 
 * 自動生成  
